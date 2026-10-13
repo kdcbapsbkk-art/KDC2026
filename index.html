@@ -1194,16 +1194,12 @@
     <div class="meta-combined-card" id="metaInfo">
       <div class="meta-col">
         <div class="meta-label">Date</div>
-        <div class="meta-value" id="eventDateDisplay">
-          <?!= (typeof eventSettings !== 'undefined' && eventSettings.date) ? eventSettings.date : 'Sunday, November 15, 2026' ?>
-        </div>
+        <div class="meta-value" id="eventDateDisplay">Sunday, November 15, 2026</div>
       </div>
       <div class="meta-divider"></div>
       <div class="meta-col">
         <div class="meta-label">Time</div>
-        <div class="meta-value" id="eventTimeDisplay">
-          <?!= (typeof eventSettings !== 'undefined' && eventSettings.timeRange) ? eventSettings.timeRange : '9:30 AM – 1:30 PM' ?>
-        </div>
+        <div class="meta-value" id="eventTimeDisplay">9:30 AM – 1:30 PM</div>
       </div>
     </div>
 
@@ -1351,7 +1347,7 @@
       
       <!-- Further Contact Information (Editable from Google Sheets Event_Settings) -->
       <p class="further-contact-text">
-        For further information, please contact: <strong id="furtherContactDisplay"><?!= (typeof eventSettings !== 'undefined' && eventSettings.contactInfo) ? eventSettings.contactInfo : '+66 81 234 5678' ?></strong> or <a href="mailto:kdcbapsbkk@gmail.com" style="color: #0F172A; font-weight: 700;">kdcbapsbkk@gmail.com</a>
+        For further information, please contact: <strong id="furtherContactDisplay">+66 81 234 5678</strong> or <a href="mailto:kdcbapsbkk@gmail.com" style="color: #0F172A; font-weight: 700;">kdcbapsbkk@gmail.com</a>
       </p>
     </div>
 
@@ -1635,7 +1631,7 @@
         const venueEl = document.getElementById('venueAddressDisplay');
         if (venueEl) venueEl.innerText = res.venue;
       }
-      if (res.contactInfo) {
+      if (res.contactInfo && !res.contactInfo.includes('ERROR') && !res.contactInfo.startsWith('#')) {
         const contactEl = document.getElementById('furtherContactDisplay');
         if (contactEl) contactEl.innerText = res.contactInfo;
       }
@@ -2023,7 +2019,7 @@
           btn.disabled = false;
           btn.innerText = "Complete Pre-Registration";
         });
-      }    }
+    }
   </script>
 
   <!-- 6. Fullscreen Glassmorphism Diwali Registration Loading Modal -->
